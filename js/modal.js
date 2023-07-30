@@ -30,3 +30,30 @@ window.addEventListener('scroll', function() {
  setTimeout(function() {
    openModal();
  }, 10000);
+
+ // POST DATA
+
+ const form = document.querySelector('form')
+const postData = (form) => {
+form.addEventListener('submit', (event) => {
+event.preventDefault()
+
+const request = new XMLHttpRequest()
+request.open("POST", "server.php")
+request.setRequestHeader("Content-type", "application/json")
+
+const formData = new formData(form)
+const obj ={}
+formData.forEach( (item,i) => {
+ obj[i] = item
+})
+const json = JSON.stringify(obj)
+request.send(json)
+request.addEventListener('load', () => {
+  if (request.status === 200){
+    console.log(request.response)
+  }
+})
+})
+}
+postData(form)
