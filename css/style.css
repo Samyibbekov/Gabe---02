@@ -162,6 +162,22 @@
     justify-content: center;
     margin-top: 50px;
 }
+/*------Converter------*/
+.converter{
+    padding: 100px 0;
+    background-color: black;
+}
+.inner_converter > div {
+    display: flex;
+    flex-direction: column;
+    row-gap:30px ;
+}
+.inner_converter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 /* MODAL */
 

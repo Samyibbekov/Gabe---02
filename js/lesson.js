@@ -90,3 +90,70 @@ function convert(element, target, target2, isTrue) {
 convert(som, usd, eur, true);
 convert(usd, som, eur, false);
 convert(eur, som, usd, false);
+
+
+// CARD SWITCHER
+
+// const card = document.querySelector('.card')
+// const btnNext = document.querySelector('#btn-next')
+// const btnPrev = document.querySelector('#btn-prev')
+// let count = 1
+
+
+
+
+// btnNext.onclick = () => {
+  
+//   count++
+//   fetch(`https://jsonplaceholder.typicode.com/todos/${count}`).then(response => response.json())
+//   .then(data => {
+//    card.innerHTML = `
+//    <p>${data.title}</p>
+//    <p style= 'color: ${data.completed ? 'green' : 'red'}>${data.completed}</p>
+//    <span> ${data.id}</span>`
+//   })
+// }
+
+// const fetchCardById = (index) => {
+//   fetch(`https://jsonplaceholder.typicode.com/todos/${index}`)
+// }
+// fetchCardById(count)
+
+
+const card = document.querySelector('.card')
+const btnNext = document.querySelector('#btn-next')
+const btnPrev = document.querySelector('#btn-prev')
+let count = 1
+
+
+const updateCard = (id) => {
+  fetch(`https://jsonplaceholder.typicode.com/todos/${id}`).then(response => response.json())
+  .then(data => {
+   card.innerHTML = `
+   <p>${data.title}</p>
+   <p style= 'color: ${data.completed ? 'green' : 'red'}'>${data.completed}</p>
+   <span> ${data.id}</span>`
+  })
+}
+
+
+const changeCount = (druk) => {
+  count += druk
+  if (count > 200) count = 1 
+  if (count < 1) count = 200 
+}
+
+
+btnNext.onclick = () => {
+  changeCount(1) 
+  updateCard(count) 
+}
+
+btnPrev.onclick = () => {
+  changeCount(-1) 
+  updateCard(count) 
+}
+
+updateCard(count)
+
+
